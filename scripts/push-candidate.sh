@@ -17,7 +17,7 @@ tmp_dir="$(mktemp -d)"
 source="$(cat "$1"/snapcraft.yaml | grep source: | awk '{printf $2}')"
 git clone "${source}" "${tmp_dir}"
 last_committed_tag="$(git -C "${tmp_dir}" describe --tags --abbrev=0)"
-docker run -v "${HOME}":/root snapcore/snapcraft sh -c "apt update && apt install -y snapcraft && snapcraft status "$1"-elopio > status"
+docker run -v "${HOME}":/root -v "$(pwd)":/cwd snapcore/snapcraft sh -c "apt update && apt install -y snapcraft && && cd /cwd && snapcraft status "$1"-elopio > status"
 last_published_tag="$(cat status | grep candidate | awk '{printf $2}')"
 
 if [ "${last_committed_tag}" != "${last_published_tag}" ]; then
