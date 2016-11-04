@@ -1,11 +1,17 @@
 #!/bin/bash
+#
+# Push updated snaps to the store.
+#
+# Environment variables
+#   PROJECT: The name of the project. It must be a directory relative to the
+#             root of the repo.
 
 set -ev
+
+trap "rm -f ${HOME}/.config/snapcraft/snapcraft.cfg" EXIT
 
 ./scripts/login.sh
 
 ./scripts/push-candidate.sh $PROJECT
 
-# Push to the edge channel.
-docker run -v "${HOME}":/root -v "$(pwd)/$1":/cwd snapcore/snapcraft sh -c "cd /cwd && snapcraft push *master*.snap --release edge"
-rm -f "${HOME}/.config/snapcraft/snapcraft.cfg"
+./scripts/push-in-docker.sh $PROJECT master edge
