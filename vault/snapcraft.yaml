@@ -18,6 +18,7 @@ apps:
 parts:
   vault:
     source: https://github.com/hashicorp/vault.git
+    source-tag: master
     plugin: go
     go-importpath: github.com/hashicorp/vault
     go-buildtags: [vault]
