@@ -15,4 +15,5 @@ apt update
 cd "$1"
 sed -i "s/source-tag: master/source-tag: '"$2"'/g" snapcraft.yaml
 sed -i "s/version: master/version: '"$2"'/g" snapcraft.yaml
+snapcraft clean
 snapcraft
