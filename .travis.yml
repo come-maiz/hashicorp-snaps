@@ -4,7 +4,11 @@ services:
   - docker
 
 env:
-  - PROJECT=vault
+  matrix:
+    - PROJECT=vault
+  global:
+    secure: bN8wsL5TfRmP7Qu8mqpCARV1VTpe6ALikPZuWMFPrPhGqDWDZ61dSOfuhn0r3VobMT8XGTLM8ggnncNFajjr2dacxn7CE5ifaVv5g5TpVu0q4qc9zsDDWr9J0rhmnLzCA8QrrDYczpD+HIjpb0XQ4NIwf99bSwfG5B3uicZFagj7XYGJiDZsDAsIHtqCJI5OZt07jmBXJ0uzKybYaZEkOlAOSJ1I/r33ZIyoSWKQ6tNM4IDDWhQqZu2GJAhGhbmqO2s9s5fAqunBwmSjAyltwCoA3PnIum8JKHrwWeir5o/lUTG46us3+oLikMOvPyDjb9Dr1P67Ku8as75fLcNuPyUjjE2inybL3yfELl2X+wBPkO38QXeWT/acUSCM+1Qkl2ubuK16zCfTDDoLcNBDX4Yto2oTwehXAVH8kekLxIfxEE2iRIsezEKBqlEEDiBU1QrQykZNgkO7Stirh0mE2S1nlSGGSJIHvT+fmlMhRPy/eeebL53qE7lHK2IpSVdpgZ+54E6gmRZQ2DiIncw2PX8VmjgrI8YnL3C6n6Yh/rZhKNkwwYdAAMQM3Rf+qDIfM0w4zMWpJDbDS9hdo1BDR2ME7qqFvFSOfLaSE7AdNJHVZ5lOvoS57mcJ8TTA2eKl+RdVmf5hQeHjp9QgKea0ZOpGkHD6JhHaiL6GoLbBaP0=
 
 script:
-  - docker run -v $(pwd)/$PROJECT:/cwd snapcore/snapcraft sh -c 'apt install software-properties-common -y && add-apt-repository -y ppa:gophers/archive && apt update && cd /cwd && snapcraft'
+  - ./scripts/snap.sh $PROJECT
+  - ./scripts/push.sh $PROJECT
