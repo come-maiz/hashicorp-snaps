@@ -22,7 +22,7 @@ last_published_tag="$(cat status | grep candidate | awk '{printf $2}')"
 
 if [ "${last_committed_tag}" != "${last_published_tag}" ]; then
     # Build using the latest tag.
-    ./scripts/snap-in-docker.sh "$1" "${last_published_tag}"
+    ./scripts/snap-in-docker.sh "$1" "${last_committed_tag}"
     # Publish to the candidate channel.
-    ./scripts/push-in-docker.sh "$1" "${last_published_tag}" candidate
+    ./scripts/push-in-docker.sh "$1" "${last_committed_tag}" candidate
 fi
