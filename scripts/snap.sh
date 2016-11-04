@@ -12,6 +12,6 @@ apt install software-properties-common -y
 add-apt-repository -y ppa:gophers/archive
 apt update
 cd "$1"
-sed -i "s/source-tag: HEAD/source-tag: '"$2"'/g"
-sed -i "s/version: HEAD/version: '"$2"'/g"
+sed -i "s/source-tag: HEAD/source-tag: '"$2"'/g" snapcraft.yaml
+sed -i "s/version: HEAD/version: '"$2"'/g" snapcraft.yaml
 snapcraft
