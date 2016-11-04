@@ -15,7 +15,7 @@ fi
 mkdir -p "$HOME/.config/snapcraft"
 openssl enc -aes-256-cbc -base64 -pass env:SNAPCRAFT_SECRET -d -in ".encrypted/snapcraft.cfg.enc" -out "$HOME/.config/snapcraft/snapcraft.cfg"
 
-docker run -v $HOME:/root -v $(pwd)/$PROJECT:/cwd snapcore/snapcraft sh -c "cd /cwd; snapcraft push *.snap --release edge"
+docker run -v $HOME:/root -v $(pwd)/$1:/cwd snapcore/snapcraft sh -c "cd /cwd; snapcraft push *.snap --release edge"
 
 openssl enc -aes-256-cbc -base64 -pass env:SNAPCRAFT_SECRET -out ".encrypted/snapcraft.cfg.enc" < "$HOME/.config/snapcraft/snapcraft.cfg"
 rm -f "$HOME/.config/snapcraft/snapcraft.cfg"
