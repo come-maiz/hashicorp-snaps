@@ -14,7 +14,7 @@ set -ev
 
 # Check if there is a new tag to push to the candidate channel.
 tmp_dir="$(mktemp -d)"
-source="$(cat "$1"/snapcraft.yaml | grep source | awk '{printf $2}')"
+source="$(cat "$1"/snapcraft.yaml | grep source: | awk '{printf $2}')"
 git clone "${source}" "${tmp_dir}"
 last_committed_tag="$(git -C "${tmp_dir}" describe --tags --abbrev=0)"
 docker run -v "${HOME}":/root snapcore/snapcraft sh -c "snapcraft status "$1"-elopio > status"
