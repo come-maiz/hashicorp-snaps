@@ -2,11 +2,11 @@
 
 set -ev
 
-if [ -z "$SNAPCRAFT_SECRET" ]; then
-    exit 1
-fi
-
 if [ ! -e "${HOME}/.config/snapcraft/snapcraft.cfg" ]; then
+
+    if [ -z "$SNAPCRAFT_SECRET" ]; then
+        exit 1
+    fi
 
     if [ ! -e ".encrypted/snapcraft.cfg.enc" ]; then
         # Get the encrypted config.
