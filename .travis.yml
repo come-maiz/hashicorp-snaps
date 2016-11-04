@@ -11,4 +11,9 @@ env:
 
 script:
   - ./scripts/snap.sh $PROJECT
-  - ./scripts/push.sh $PROJECT
+
+deploy:
+  provider: script
+  script: scripts/push.sh $PROJECT
+  on:
+    branch: master
