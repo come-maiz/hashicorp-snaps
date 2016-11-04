@@ -16,5 +16,5 @@ deploy:
   skip_cleanup: true
   provider: script
   script: scripts/push.sh $PROJECT
-#  on:
-#    branch: master
+  on:
+    branch: master
