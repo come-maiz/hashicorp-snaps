@@ -12,8 +12,6 @@
 
 set -ev
 
-./scripts/login.sh
-
 # Check if there is a new tag to push to the candidate channel.
 tmp_dir="$(mktemp -d)"
 source="$(cat "$1"/snapcraft.yaml | grep source | awk '{print $2}'"

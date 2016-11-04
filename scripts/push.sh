@@ -2,6 +2,8 @@
 
 set -ev
 
+./scripts/login.sh
+
 ./scripts/push-candidate.sh $PROJECT
 
 # Push to the edge channel.
