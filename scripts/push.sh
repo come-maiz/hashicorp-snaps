@@ -14,4 +14,4 @@ trap "rm -f ${HOME}/.config/snapcraft/snapcraft.cfg" EXIT
 
 ./scripts/push-candidate.sh $1
 
-./scrips/push-in-docker.sh $1 master edge
+./scripts/push-in-docker.sh $1 master edge
