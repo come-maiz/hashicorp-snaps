@@ -16,4 +16,4 @@ if [ $2 == 'armhf' ]; then
     docker run --rm --privileged multiarch/qemu-user-static:register --reset
 fi
 
-docker run -v "$(pwd)":/cwd "$docker_image" sh -c "cd /cwd && ./scripts/snap.sh $1 $2 $3"
+docker run -v "$(pwd)":/cwd "$docker_image" sh -c "cd /cwd && ./scripts/snap.sh $1 $3"
