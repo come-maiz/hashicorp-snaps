@@ -25,18 +25,10 @@ parts:
     source-tag: master
     plugin: go
     go-importpath: github.com/hashicorp/consul
-    after: [go1.7]
+    after: [go]
   script:
     source: .
     plugin: dump
     snap: ["consul-snap", "tools"]
-  go1.7:
-    plugin: nil
-    build-packages: [golang-go]
-    source: https://go.googlesource.com/go
-    source-type: git
+  go:
     source-tag: go1.7.5
-    build: cd src && env GOROOT_BOOTSTRAP=$(go env GOROOT | tr -d '\n') ./make.bash
-    install: cp -R * $SNAPCRAFT_PART_INSTALL
-    prime:
-      - '-*'
