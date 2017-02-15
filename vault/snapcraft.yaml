@@ -23,3 +23,14 @@ parts:
     go-importpath: github.com/hashicorp/vault
     go-buildtags: [vault]
     build-packages: [git, g++, libsasl2-dev]
+    after: [go1.7]
+  go1.7:
+    plugin: nil
+    build-packages: [golang-go]
+    source: https://go.googlesource.com/go
+    source-type: git
+    source-tag: go1.7.5
+    build: cd src && env GOROOT_BOOTSTRAP=$(go env GOROOT | tr -d '\n') ./make.bash
+    install: cp -R * $SNAPCRAFT_PART_INSTALL
+    prime:
+      - '-*'
