@@ -8,4 +8,4 @@
 
 set -ev
 
-docker run -v "$(pwd)":/cwd snapcore/snapcraft sh -c "apt update && apt upgrade && cd /cwd && ./scripts/snap.sh $1 $2"
+docker run -v "$(pwd)":/cwd snapcore/snapcraft sh -c "apt update && apt upgrade -y && cd /cwd && ./scripts/snap.sh $1 $2"
