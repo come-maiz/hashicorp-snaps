@@ -1,5 +1,5 @@
 name: consul-elopio
-version: master
+version: 'master'
 summary: Consul is a tool for service discovery, monitoring and configuration
 description: |
   Consul is distributed, highly available, and extremely scalable.
@@ -22,7 +22,7 @@ plugs:
 parts:
   consul:
     source: https://github.com/hashicorp/consul.git
-    source-tag: master
+    source-tag: 'master'
     plugin: go
     go-importpath: github.com/hashicorp/consul
     after: [go]
