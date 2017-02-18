@@ -8,10 +8,6 @@
 
 set -ev
 
-apt update
-apt install software-properties-common -y
-add-apt-repository -y ppa:gophers/archive
-apt update
 cd "$1"
 sed -i "s/source-tag:.*$/source-tag: '"$2"'/g" snapcraft.yaml
 sed -i "s/version:.*$/version: '"$2"'/g" snapcraft.yaml
