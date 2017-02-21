@@ -25,4 +25,4 @@ parts:
     build-packages: [git, g++, libsasl2-dev]
     after: [go]
   go:
-    source-tag: go1.7.5
+    source-tag: go1.8
