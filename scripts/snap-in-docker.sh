@@ -13,7 +13,7 @@ trap "rm -f ${HOME}/.config/snapcraft/snapcraft.cfg" EXIT
 
 # Check if the latest tag is in the beta channel.
 tmp_dir="$(mktemp -d)"
-source="$(cat $1/snapcraft.yaml | grep source: | head -n 1 | awk '{pri
+source="$(cat $1/snapcraft.yaml | grep source: | head -n 1 | awk '{printf $2}')"
 git clone "${source}" "${tmp_dir}"
 last_committed_tag="$(git -C "${tmp_dir}" describe --tags --abbrev=0)"
 docker run -v $(pwd):$(pwd) snapcore/snapcraft sh -c "apt update && apt install -y snapcraft && cd $(pwd) && ((snapcraft status $1-elopio || echo "none") > status)"
