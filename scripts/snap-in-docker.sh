@@ -25,4 +25,4 @@ if [ "${last_committed_tag}" != "${last_released_tag}" ]; then
   sed -i "s/version:.*$/version: '"$last_committed_tag"'/g" $1/snapcraft.yaml
 fi
 
-docker run -v "$(pwd)":/cwd snapcore/snapcraft sh -c "apt update && apt upgrade -y && cd /cwd && ./scripts/snap.sh $1
+docker run -v "$(pwd)":/cwd snapcore/snapcraft sh -c "apt update && apt upgrade -y && cd /cwd && ./scripts/snap.sh $1"
