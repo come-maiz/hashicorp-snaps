@@ -4,9 +4,11 @@
 #
 # Arguments:
 #   project: The name of the project. It must be a directory relative to the root of the repo.
-#   version: The version of the snap to push.
-#   channel: The channel where the snap will be pushed.
 
 set -ev
 
-docker run -v "${HOME}":/root -v "$(pwd)/$1":/cwd snapcore/snapcraft sh -c "cd /cwd && snapcraft push *$2*.snap --release $3"
+trap "rm -f ${HOME}/.config/snapcraft/snapcraft.cfg" EXIT
+
+./scripts/login.sh
+
+docker run -v "${HOME}":/root -v "$(pwd)/$1":/cwd snapcore/snapcraft sh -c "cd /cwd && snapcraft push *.snap --release edge"
