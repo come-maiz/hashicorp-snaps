@@ -23,6 +23,8 @@ if [ "${last_committed_tag}" != "${last_released_tag}" ]; then
   # Build using the latest tag.
   sed -i "0,/source-tag/s/source-tag:.*$/source-tag: '"$last_committed_tag"'/g" $1/snap/snapcraft.yaml
   sed -i "s/version:.*$/version: '"$last_committed_tag"'/g" $1/snap/snapcraft.yaml
+  # Set the stable grade to be able to move it to the candidate and stable channels.
+  sed -i "s/grade:.*$/grade: stable/g" $1/snap/snapcraft.yaml
 fi
 
 docker run -v "$(pwd)":/cwd snapcore/snapcraft sh -c "apt update && apt upgrade -y && cd /cwd && ./scripts/snap.sh $1"

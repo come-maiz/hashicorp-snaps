@@ -8,6 +8,8 @@ description: |
   is already very difficult and platform-specific. Adding on key rolling,
   secure storage, and detailed audit logs is almost impossible without a custom
   solution. This is where Vault steps in.
+
+grade: devel
 confinement: strict
 
 apps:
