@@ -12,7 +12,7 @@ confinement: strict
 apps:
   terraform:
     command: terraform
-    plugs: [home, network]
+    plugs: [home, network, network-bind]
 
 parts:
   terraform:
